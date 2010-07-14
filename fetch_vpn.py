@@ -34,7 +34,7 @@ def register(form = None):
 def user(feed = time.time(), feed2 = random.random()):
     usename = str(feed)[0:10]+str(feed2)[2:5]
     passwd = str(feed2)[3:6]+str(feed)[0:10]
-    email =  str(feed2)[2:6]+'@qq.com'
+    email =  "mickey.fetchbot+"+str(feed2)[2:6]+'@gmail.com'
     fname = ''.join(random.sample('abcdefghijklmnopqrstuvwxyz',6))
     lname = ''.join(random.sample('abcdefghijklmnopqrstuvwxyz',4))
     addr = ''.join(random.sample('abcdefghijklmnopqrstuvwxyz',12))
