@@ -1,0 +1,41 @@
+<div class="sidebar">
+<ul>
+<li>
+
+    <h2>About</h2>
+    <img src="/themes/{{ blog.theme_name }}/images/2.jpg" alt="Author" style="float: left; margin: 0 10px 0 -3px; padding: 0;" />
+    <h3>Guang Feng</h3>
+		<p>lazy programmer,who has a big dream.</p>   
+</li>
+
+<li>
+ <h2>Categories</h2>
+  <ul>
+ 	{%for cate in categories%}
+  <li>	<a href="/category/{{cate.slug}}">{{cate.name}}({{cate.count}})</a></li>
+ 	{%endfor%}
+ 	</ul>
+
+</li>
+
+<li>
+<h2>Favorites</h2>
+<ul>
+{%for link in blogroll%}
+<li><a href="{{link.href}}">{{link.linktext}}</a></li>
+{%endfor%}
+
+</ul>
+</li>
+
+<li>
+<h2>Tags</h2
+<ul>
+		{% for t in alltags %}
+		<a title="{{ t.tagcount }} pages" href="/tag/{{t.tag|urlencode}}"><span style='font-size:{{ t.tagcount|add:9 }}px;'>{{t.tag}}</span></a>
+		{%endfor%}
+</ul>
+</li>	
+
+</ul>
+</div>

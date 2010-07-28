@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content%}
+
+<div id="content">
+
+{% if entries %}
+
+{% for entry in entries %}
+
+			<div class="post" id="post-{{entry.key.id}}">
+				<h1><a href="/{{ entry.link }}" rel="bookmark" title="Permanent Link to {{entry.title|escape}}">{{entry.title|escape}}</a></h1>
+
+				{{entry.content_excerpt}}
+
+				<div class="post-info">
+					{{entry.date|datetz:"F jS, Y"}} in
+					{%for cate in entry.categories%} <a href="/category/{{cate.slug}}">{{cate.name}}</a> {%endfor%}
+					{% if entry.strtags %}Tagged with: {%for tag in entry.tags%}<a href="/tag/{{tag|urlencode}}">{{tag}}</a> {%endfor%}{%endif%} |
+					<a href="/{{entry.link}}">阅读({{entry.readtimes}})</a> |
+					<a href="/{{entry.link}}#comments">with {{entry.commentcount}} comments</a>
+				</div>
+			</div>
+{% endfor %}
+
+		<div id="pages">
+			{% if show_next %}<a href="/page/{{ pageindex|add:"1" }}">&laquo; Older Entries</a>{%endif%}&nbsp;&nbsp;&nbsp;{% if show_prev %}<a href="/page/{{ pageindex|add:"-1" }}">&laquo; Newer Entries</a>{%endif%}
+		</div>
+
+{% else %}
+
+		<h1>Not Found</h1>
+		<p class="center">Sorry, but you are looking for something that isn't here.</p>
+
+	{% endif %}
+
+</div>
+
+{% include "sidebar.html" %}
+{% endblock %}

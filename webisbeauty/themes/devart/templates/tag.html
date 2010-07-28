@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %} {{tag}} - {{blog.title}} {% endblock %}
+{% block content%}
+
+
+	<div id="content">
+
+			{% if entries %}
+			<div class="post post-list">
+
+			<h1>Posts Tagged <span>{{tag}}</span> </h1>
+
+				<ul>
+{% for entry in entries %}
+
+						<li><a href="/{{entry.link}}" rel="bookmark" title="Permanent Link to {{entry.title|escape}}">{{entry.title|escape}}</a> - {{entry.date|datetz:"F jS, Y"}}</li>
+
+				{% endfor %}
+				</ul>
+			</div>
+
+			<div id="pages">
+							{% if pager.prev %}
+			<a href="?page={{ pager.prev}}">&laquo; Older Entries</a>{% endif %}
+			&nbsp;&nbsp;&nbsp;{% if pager.next %}
+			<a href="?page={{ pager.next }}">Newer Entries &raquo;</a>{% endif %}
+
+						</div>
+
+
+{% else %}
+
+			<h2 class="center">Not Found</h2>
+
+{% endif %}
+
+	</div>
+{% include "sidebar.html" %}
+{% endblock %}
+

@@ -1,0 +1,106 @@
+
+{% if entry.comments.count%}
+
+	<h1 class="comments-title">{{entry.comments.count}} Comments</h1>
+
+	<div id="comments">
+
+			{% for comment in entry.comments %}
+			<div class="comment" id="comment-{{comment.key.id}}">
+
+				<div class="comment-avatar">
+<img height="50" width="50" class="avatar avatar-50" src="{{comment.gravatar_url}}" alt=""/>				</div>
+
+				<div class="comment-content">
+					<div class="comment-info"><span><a href="{{comment.weburl}}" target="_blank">{{comment.author}}</a></span>{{comment.date.date|datetz:"Y-m-d"}} at {{comment.date|datetz:"H:i"}} </div>
+
+{{comment.content}}				</div>
+			</div>
+{%endfor%}
+
+	</div>
+{%endif%}
+
+	<h1 class="comments-title">Leave a comment</h1>
+<p></p>
+		<form action="/post_comment" method="post" id="commentform">
+
+				<p><input type="text" name="author" id="author" class="text" value="" />
+				<label for="author">Name (required)</label></p>
+
+				<p><input type="text" name="email" id="email" class="text" value="" />
+				<label for="email">Mail (will not be published) (required)</label></p>
+
+				<p><input type="text" name="url" id="url" class="text" value="" />
+				<label for="url">Website</label></p>
+				<p><input type="text" class="text" name="checkret" id="checkret" value=""/>
+				<label> ={{checknum1}}+{{checknum2}}</label>
+				<input type="hidden" name="checknum" id="checknum" value="{{checknum1}}+{{checknum2}}" />
+				</p>
+
+				<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+				<p><input name="submit" type="submit" id="submit" value="Submit Comment" /></p>
+<input type="hidden" name="key" value="{{entry.key}}" />
+
+		</form>
+
+<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+<script>
+    commentuser=$.cookie('comment_user');
+       if (commentuser)
+       {
+         [user,email,url]=commentuser.split('#@#');
+         $('#author').val(user);
+         $('#email').val(email);
+         $('#url').val(url);
+         $('#checkarea').hide();
+       }
+       else
+       {
+       	num1=Math.round(Math.random()*10);
+       	num2=Math.round(Math.random()*10);
+       	$('#checkarea #checknum').val(num1+'+'+num2);
+       	$('#checkarea #disp_check').text(num1+'+'+num2+'=');
+       	$('#checkarea').show();
+       }
+
+  $('#commentform').submit(function(){
+         var form = this;
+           if (form.author)
+  		   {
+
+      			 if (!form.author.value)
+          		 {
+          		  alert('Please input your name.');
+          		  form.author.focus();
+          		  return false;
+          		 }
+          		 if (!form.email.value)
+          		 {
+          		 	alert('Please input the email address.');
+          		 	form.email.focus();
+          		 	return false;
+          		 }
+	       }
+	        if ($('#checkarea').css('display')!='none')
+								       {
+							             if(eval(form.checknum.value)!=form.checkret.value)
+							             {
+							               alert('check code error');
+							               form.checkret.value='';
+							               form.checkret.focus();
+							               return false;
+							             }
+
+							           }
+
+      		 if (!form.comment.value)
+      		 {
+      		 	alert('Please leave some reply message.');
+      		 	form.comment.focus();
+      		 	return false;
+      		 }
+
+      		 return true;
+  });
+</script>

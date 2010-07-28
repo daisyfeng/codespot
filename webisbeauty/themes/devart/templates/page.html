@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} {{entry.title|escape}} - {{blog.title|escape}} {% endblock %}
+{% block head_block %}
+{% if entry %}
+{%if entry.strtags%}<meta name="Keywords" content="{{entry.strtags}}">{%endif%}
+{%if entry.excerpt%} <meta name="Description" content="{{entry.excerpt}}">{%endif%}
+{% endif %}
+{% endblock %}
+{% block content%}
+
+	<div id="content">
+
+		{% if entry %}
+
+			<div class="post" id="post-{{entry.key}}">
+
+				<h1>{{entry.title|escape}}</h1>
+				{{ entry.content }}
+
+				<p>{%if self.is_admin%}<a href="{{entry.edit_url}}">Edit this entry</a>{%endif%}</p>
+			</div>
+
+		{%endif%}
+{% include "comments.html" %}
+
+	</div>
+
+{% include "sidebar.html" %}
+{% endblock %}

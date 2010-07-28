@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8;" />
+<title>{% block title %} {{ blog.title}}{% endblock %}</title>
+<link rel="stylesheet" href="/themes/{{ blog.theme_name }}/style.css" type="text/css" media="screen" />
+<!--[if IE]><link rel="stylesheet" type="text/css" href="/themes/{{ blog.theme_name }}/ie.css" media="screen" /><![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="{{ blog.title }} RSS Feed" href="{{ blog.feedurl }}" />
+<link href='http://www.blogger.com/favicon.ico' rel='icon' type='image/vnd.microsoft.icon'/>
+
+<link href="/static/wlwmanifest.xml" type="application/wlwmanifest+xml" rel="wlwmanifest"/>
+<script type="text/javascript" src="/static/js/jquery-1.2.6.min.js"></script>
+{% block head_block %}{% endblock %}
+</head>
+<body>
+
+<div id="container">
+
+	<div id="header">
+		<h1><a href="{{blog.baseurl}}/" title="{{blog.title}}">{{blog.title}}</a></a><span>{{blog.subtitle}}</span></h1>
+		<div id="search">
+			<form method="get" id="searchform" action="/">
+				<input type="text" value="Search..." name="s" id="s" onfocus="if(this.value=='Search...')this.value=''" onblur="if(this.value=='')this.value='Search...'" />
+				<input type="submit" id="searchsubmit" value="" />
+			</form>
+		</div>
+	</div>
+
+	<div id="nav">
+		<ul>
+            <li class="{%if ishome%}current_page_item{%else%}page_item{%endif%}" >
+            	<a  href="{{ blog.baseurl }}"  >Main</a>
+            </li>
+            {{self.m_list_pages}}
+		</ul>
+		<a href="{{blog.feedurl}}" id="feed">Subscribe</a>
+	</div>
+
+	<div id="wrapper">
+    {% block content %}{% endblock %}
+	</div>
+
+	<div id="wrapper-bottom"></div>
+
+	<div id="footer"><div id="footer-inner"><div id="footer-content">
+		<p>
+			{{blog.title}} is powered by
+			<a href="http://code.google.com/appengine">Google App Engine</a> |
+			<a href="{{blog.feedurl}}">Entries (RSS)</a>
+		</p>
+		<p>Copyright &copy; 2010. All right reserved. Theme by <a href="http://deniart.ru">deniart</a>, modified by <a href="http://blog.huhaitai.com">haitai</a>, vvonder</p>
+	</div></div></div>
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Create an Application Key</title>
+<style type="text/css">
+@import "https://appengine.google.com/css/compiled.135j.343040715679255282.css";
+</style>
+<script src="https://appengine.google.com/js/compiled.135j.343040715679255282.js"></script>
+</head>
+<body>
+<div class="g-doc-1024">
+<div id="hd" class="g-section g-tpl-50-50 g-split"
+     style="background-color: white">
+<div class="g-unit g-first">
+<p>
+<span><img src="/static/logo.png"></span>
+</a>
+</p>
+</div>
+<div class="g-unit" id="ae-userinfo">
+<ul>
+<li>
+<strong>
+For Developers
+</strong> |
+</li>
+<li>
+
+
+</li>
+<li>
+
+</li>
+<li>
+
+</li>
+</ul>
+</div>
+</div>
+<div id="ae-appbar-sml" class="ae-rounded-sml">&nbsp;</div>
+<div id="bd">
+<div id="ae-content">
+<h1>
+
+Create an Application
+</h1>
+<p>
+You have 8
+applications
+remaining.
+</p>
+<form action="createapp.do" method="post" id="ae-createapp"
+  class="ae-form">
+<input type="hidden" name="xsrf-token"
+    value="2LYuAqrZbWbQiFfrr5w0djoxMjgwMjgzMTA3NzU4NTU2">
+<div class="ae-input-row
+    
+    ">
+<div class="ae-label-row">
+<label for="ae-createapp-id">Application Identifier:</label>
+</div>
+<div class="ae-input-row">
+<table id="ae-createapp-id-content">
+<tr>
+<td id="ae-createapp-id-td">
+<input type="text" id="ae-createapp-id" name="app_id"
+              value=""
+              size="20" maxlength="30" tabindex="1">
+
+<span>.appspot.com</span>
+<div class="ae-field-hint">
+You can map this application to your own domain later.
+<a
+                href="http://code.google.com/appengine/articles/domains.html"
+                >Learn more</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="ae-input-row
+    ">
+<div class="ae-label-row">
+<label for="title">Application Title:</label>
+</div>
+
+<div class="ae-input-row">
+<input type="text" name="title" id="title"
+        value=""
+        size="32" maxlength="30" tabindex="2">
+<div class="ae-field-hint">
+Displayed when users access your application.
+</div>
+</div>
+</div>
+<div id="ae-authdomain-content" class="ae-input-row ae-input-row-group">
+<div id="ae-authdomain-opts">
+<strong>Authentication Options (Advanced):</strong>
+<a href="http://code.google.com/appengine/kb/general.html#auth">
+Learn more
+</a>
+<div id="ae-authdomain-opts-hint">
+Google App Engine provides an API for authenticating your users,
+including <strong>Google Accounts</strong>, <strong>Google Apps
+
+</strong>, and <strong>OpenID</strong>. If you choose to use this
+feature for some parts of your site, you'll need to specify now
+what type of users can sign in to your application:
+</div>
+</div>
+<div id="ae-authdomain-inputs">
+<div class="ae-input-row ae-radio">
+<label id="ae-authdomain-google-label" for="ae-authdomain-google">
+<input
+            type="radio"
+            id="ae-authdomain-google"
+            name="auth_config"
+            value="google"
+            
+              checked="checked"
+            
+          >
+Open to all Google Accounts users <strong>(default)</strong>
+</label>
+<div id="ae-authdomain-google-hint" class="ae-field-hint">
+If your application uses authentication, anyone with a valid
+Google Account may sign in. (This includes all Gmail Accounts,
+but does *not* include accounts on any Google Apps domains.)
+</div>
+</div>
+
+<div class="ae-input-row ae-radio
+        ">
+<label for="ae-authdomain-other">
+<input
+            type="radio"
+            id="ae-authdomain-other"
+            name="auth_config"
+            value="google"
+            
+          >
+Restricted to the following
+<a href="http://www.google.com/a">Google Apps</a> domain:
+</label>
+<div class="ae-input-text">
+<input
+            id="ae-authdomain-input"
+            type="text"
+            size="30"
+            name="auth_domain"
+            value=""
+          >
+</div>
+<div class="ae-field-hint">
+e.g. foo.com
+</div>
+<div class="ae-field-hint">
+If your application uses authentication, <strong>only members of
+this Google Apps domain may sign in</strong>. If your
+organization uses Google Apps, use this option to create an
+application (e.g. an HR tracking tool) that is only accessible
+to accounts on your Google Apps domain. This option cannot be
+changed once it has been set.
+
+</div>
+</div>
+<div class="ae-input-row ae-radio">
+<label id="ae-authdomain-fedlogin-label" for="ae-authdomain-fedlogin">
+<input
+            type="radio"
+            id="ae-authdomain-fedlogin"
+            name="auth_config"
+            value="federatedlogin"
+            
+          >
+(Experimental) Open to all users with an OpenID Provider
+</label>
+<div id="ae-authdomain-none-hint" class="ae-field-hint">
+If your application uses authentication, anyone who has an account
+with an OpenID Provider may sign in.
+</div>
+</div>
+</div>
+</div>
+<input type="hidden" name="tos_accept" value="off">
+<div class="ae-btn-row">
+<input type="submit" class="goog-button ae-btn-primary"
+      value="Create Application"
+      tabindex="3">
+<a href="/" class="goog-button ae-cancel" 
+      tabindex="4">Cancel</a>
+
+</div>
+</form>
+<script>
+ae.CreateApp.init();
+</script>
+</div>
+</div>
+<div id="ft">
+&#169; 2008 Google |
+<a href="http://code.google.com/appengine/terms.html">Terms of Service</a>
+| <a href="http://code.google.com/appengine/privacy.html">Privacy Policy</a>
+| <a href="http://googleappengine.blogspot.com">Blog</a>
+
+| <a href="http://groups.google.com/group/google-appengine"
+    >Discussion Forums</a>
+</div>
+<script>
+ae.init();
+</script>
+</div>
+</body>
+</html>

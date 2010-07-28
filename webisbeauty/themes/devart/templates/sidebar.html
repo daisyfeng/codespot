@@ -1,0 +1,95 @@
+<div id="sidebar">
+
+	<div class="block">
+		<h3>who I am</h3>
+		<img src="/themes/{{ blog.theme_name }}/images/2.jpg" alt="Author" style="float: left; margin: 0 10px 0 -3px; padding: 0;" />
+		<p>lazy programmer,who has a big dream.</p>
+	</div>
+	
+{% if categories %}
+	<div class="block">
+		<h3>archive</h3>
+		<ul>
+		    {%for cate in categories%}
+		  <li>	<a href="/category/{{cate.slug}}">{{cate.name}}({{cate.count}})</a></li>
+		 	{%endfor%}
+		</ul>
+
+	</div>
+{% endif %}
+	
+{% if alltags %}
+	<div class="block">
+		<h3>tags</h3>
+		{% for t in alltags %}
+		<a title="{{ t.tagcount }} pages" href="/tag/{{t.tag|urlencode}}"><span style='font-size:{{ t.tagcount|add:9 }}px;'>{{t.tag}}</span></a>
+		{%endfor%}
+	
+	</div>
+{% endif %}
+
+      <!-- <div class="block">     -->
+      <!--        <h3>Latest</h3> -->
+      <!--        <ul> -->
+      <!--        {% for entry in blog.recentposts %} -->
+      <!--            <li><a href="/{{entry.link}}">{{entry.title|escape}}({{entry.readtimes}})</a></li> -->
+      <!--        {%endfor%} -->
+      <!--        </ul> -->
+      <!-- </div> -->
+
+      <!-- <div class="block">     -->
+      <!--        <h3>Comment</h3> -->
+      <!--        <ul> -->
+      <!--        {% for comment in recent_comments %} -->
+      <!--        <li><a -->
+      <!--                   href="/{{comment.entry.link}}#comment-{{comment.key.id}}">{{comment.shortcontent}}...</a></li> -->
+      <!--        {%endfor%} -->
+      <!--        </ul> -->
+      <!-- </div> -->
+      
+      <div class="block">    
+             <h3>hot</h3>
+             <ul>
+             {% for entry in blog.hotposts %}
+                 <li><a href="/{{entry.link}}">{{entry.title|escape}}({{entry.readtimes}})</a></li>
+             {%endfor%}
+             </ul>
+      </div>
+
+
+	<div class="block">
+		<h3>favorites</h3>
+		<ul>
+		{%for link in blogroll%}
+		<li><a href="{{link.href}}">{{link.linktext}}</a></li>
+		{%endfor%}
+		</ul>
+
+	</div>
+
+	<div class="block">
+		<h3>meta</h3>
+		<ul>
+		<li class="page_item" ><a href="{{blog.feedurl}}">(RSS)</a></li>
+		{% block topmenu %}{% endblock %}
+
+		{%if self.is_admin%}
+		<li><a href="/admin/post">Write</a> </li>
+		 <li><a href="/admin">Admin</a> </li>
+		{%endif%}
+		  <li>
+		 {%if self.is_login%}
+
+		   <a href="{{self.logouturl}}">Logout</a>
+
+		 {%else%}
+		   <a href="/admin">Login</a>
+
+		 {%endif%}
+		     </li>
+
+		</ul>
+
+	</div>
+
+</div>

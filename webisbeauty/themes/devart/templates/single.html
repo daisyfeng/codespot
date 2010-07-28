@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %} {{entry.title|escape}} - {{blog.title|escape}} {% endblock %}
+{% block content%}
+
+<div id="content">
+
+{% if entry %}
+
+		<div class="post" id="post-{{ entry.key.id }}">
+			<h1>{{entry.title|escape}}</h1>
+
+			{{ entry.content }}
+
+			<div class="post-info">
+				{{entry.date|datetz:"F jS, Y"}} in
+				{%for cate in entry.categories%} <a href="/category/{{cate.slug}}">{{cate.name}}</a> {%endfor%}
+									{% if entry.strtags %}Tagged with: {%for tag in entry.tags%}<a href="/tag/{{tag|urlencode}}">{{tag}}</a> {%endfor%}{%endif%}
+
+				{%if self.is_admin%}<a href="{{entry.edit_url}}">Edit</a>{%endif%}
+			</div>
+		</div>
+
+{% include "comments.html" %}
+
+{% else %}
+
+		<p>Sorry, no posts matched your criteria.</p>
+
+{% endif %}
+
+</div>
+{% include "sidebar.html" %}
+{% endblock %}
+
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>
